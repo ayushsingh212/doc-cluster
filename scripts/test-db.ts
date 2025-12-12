@@ -1,9 +1,11 @@
 import dotenv from "dotenv";
-import { PrismaClient } from "@prisma/client";
+// In your prisma.config.ts or where you initialize prisma
+import { PrismaClient } from '@prisma/client'
 
-dotenv.config();
+const prisma = new PrismaClient()
+dotenv.config()
 
-const prisma = new PrismaClient();
+export { prisma }
 
 async function main() {
   try {

@@ -1,6 +1,6 @@
-services:
+services: 
   app:
-    image: code-clash-prod:latest
+    image: doc-cluster-backend:latest
     build:
       context: .
       dockerfile: Dockerfile.prod
@@ -56,4 +56,3 @@ volumes:
 
 networks:
   docCluster-network:
-    external: true

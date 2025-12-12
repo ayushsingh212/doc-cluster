@@ -27,7 +27,7 @@ export const registerService = async (data: any) => {
       phoneNumber,
       DOB: DOB ? new Date(DOB) : undefined,
       password: hashedPassword,
-      isEmailVerified: false,
+      isVerified: false,
       avatarUrl:
         "https://img.freepik.com/premium-vector/user-profile-icon-flat-style-member-avatar-vector-illustration-isolated-background-human-permission-sign-business-concept_157943-15752.jpg",
       avatarId: "/",
@@ -41,7 +41,7 @@ export const registerService = async (data: any) => {
       fullName: user.fullName,
       username: user.username,
       email: user.email,
-      isEmailVerified: false,
+      isVerified: false,
       avatarUrl: user.avatarUrl,
       avatarId: user.avatarId,
       coverInfo: user.coverInfo,
@@ -66,7 +66,7 @@ export const loginService = async (identifier: string, password: string) => {
   const passwordMatch = await bcrypt.compare(password, user.password);
   if (!passwordMatch) return { error: "Incorrect password" };
 
-  if (!user.isEmailVerified)
+  if (!user.isVerified)
     return { error: "Email not verified. Please verify first." };
 
   const accessToken = generateAccessToken({
